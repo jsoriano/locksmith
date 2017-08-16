@@ -26,7 +26,9 @@ REBOOT_STRATEGY=reboot
 The reboot strategy can also be configured through a [Container Linux Config](https://github.com/coreos/container-linux-config-transpiler/blob/master/doc/getting-started.md).
 
 The default strategy is to follow the `etcd-lock` strategy if etcd is running,
-and to otherwise follow the `reboot` strategy.
+and to otherwise follow the `reboot` strategy. `locksmithd` checks if etcd is
+running by checking if some known systemd units are active, to configure an
+specific systemd unit, `LOCKSMITHD_ETCD_SERVICE` can be used.
 
 ## Usage
 

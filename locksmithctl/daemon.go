@@ -366,6 +366,11 @@ func runDaemon() int {
 		lengthw = os.Getenv("REBOOT_WINDOW_LENGTH")
 	}
 
+	etcdService := os.Getenv("LOCKSMITHD_ETCD_SERVICE")
+	if etcdService != "" {
+		etcdServices = []string{etcdService}
+	}
+
 	if (startw == "") != (lengthw == "") {
 		dlog.Fatal("Either both or neither $REBOOT_WINDOW_START and $REBOOT_WINDOW_LENGTH must be set")
 	}
